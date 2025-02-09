@@ -1,0 +1,52 @@
+name: Deploy to GCP Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+      - feat/gcp-functions-ts-mongodb-boilerplate
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker-compose.yml"
+
+      - run: npm run test
+
+      - name: Build the GCP function
+        run: |
+          npm run build:prod
+
+      - name: 'auth service account 2'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud functions deploy ${{ vars.GCP_FUNCTION_NAME }} \
+            --gen2 \
+            --runtime=nodejs22 \
+            --region=${{ vars.GCP_FUNCTION_REGION }} \ 
+            --trigger-http \
+            --allow-unauthenticated \
+            --entry-point=${{ vars.GCP_FUNCTION_ENTRY_POINT }} \
+            --source=dist
