@@ -1,7 +1,7 @@
 {
   "name": "gcp-functions-ts-mongodb-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "A boilerplate for Google Cloud Functions using TypeScript and MongoDB",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --clear --transpile-only --ignore-watch node_modules ./src/app.ts",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/YuDaSe/gcp-functions-ts-mongodb-boilerplate.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/YuDaSe/gcp-functions-ts-mongodb-boilerplate/issues"
   },
