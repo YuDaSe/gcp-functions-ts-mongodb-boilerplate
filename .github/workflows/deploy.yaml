@@ -47,6 +47,5 @@ jobs:
             --runtime=nodejs22 \
             --region=${{ vars.GCP_FUNCTION_REGION }} \ 
             --trigger-http \
-            --allow-unauthenticated \
             --entry-point=${{ vars.GCP_FUNCTION_ENTRY_POINT }} \
             --source=dist
