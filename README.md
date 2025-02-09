@@ -1,5 +1,19 @@
 # gcp-functions-ts-mongodb-boilerplate
 
+## Keywords
+
+- Google Cloud Functions
+- Google Cloud Functions Run
+- TypeScript
+- MongoDB
+- Boilerplate
+- Environment Configuration
+- Node.js
+- GitHub Actions
+- Cloud Deployment
+- Cloud Run
+- Serverless Functions
+
 ## Overview
 
 This is a boilerplate project for creating Google Cloud Functions using TypeScript and MongoDB. It provides a basic structure and setup to get you started quickly.
