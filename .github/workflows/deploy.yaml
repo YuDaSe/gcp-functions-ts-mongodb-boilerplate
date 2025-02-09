@@ -45,7 +45,7 @@ jobs:
           gcloud functions deploy ${{ vars.GCP_FUNCTION_NAME }} \
             --gen2 \
             --runtime=nodejs22 \
-            --region=${{ vars.GCP_FUNCTION_REGION }} \ 
+            --region=${{ vars.GCP_FUNCTION_REGION }} \
             --trigger-http \
             --entry-point=${{ vars.GCP_FUNCTION_ENTRY_POINT }} \
             --source=dist
